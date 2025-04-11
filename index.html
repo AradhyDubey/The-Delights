@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Delights - Sweets Shop</title>
+  <link rel="stylesheet" href="new.html">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding-bottom: 100px;
+      background-color: #f7f7f7;
+    }
+
+    header {
+      background-color: #ff6f61;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    /* Header Section Styling */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ff6f61;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .logo {
+      position: absolute;
+      left: 10px;
+      top: 28px;
+      width: 80px; /* Adjust the size of the logo */
+      height: auto;
+    }
+
+.header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .header-img {
+      width: 250px; /* Set your image width */
+      height: 250px; /* Set your image height */
+      border-radius: 15px;
+      margin-right: 20px; /* Spacing between image and text */
+      object-fit: cover; /* Ensures the image covers the space proportionally */
+    }
+ header h1 {
+      margin: 10px;
+      font-size: 40px;
+    }
+
+     nav {
+      background-color: #ffb3b3;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+    }
+
+    .cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #e64233;
+      color: white;
+      padding: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .sweets-item {
+      background-color: #f5e5e5;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 200px;
+    }
+
+    .sweets-item img {
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .sweets-item h3 {
+      color: #ff6f61;
+      font-size: 22px;
+    }
+
+    .sweets-item p {
+      color: #555;
+      font-size: 16px;
+    }
+
+    .sweets-item button {
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .sweets-item button:hover {
+      background-color: #e6554a;
+    }
+
+    footer {
+      background-color: #f75f5f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Cart Modal */
+    #cartModal {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 350px;
+      background: #fff;
+      border: 2px solid #ff6f61;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      padding: 15px;
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    .cart-item {
+      display: flex;
+      margin-bottom: 15px;
+      align-items: center;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+
+    .cart-item h4 {
+      margin: 0;
+      color: #ff6f61;
+    }
+
+    .cart-item p {
+      margin: 0;
+    }
+
+    .remove-btn {
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .total-price {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #closeBtn {
+      background-color: #ff6f61;
+      color: white;
+      padding: 8px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.pinimg.com/736x/3f/98/06/3f98068662153cf423b4cd4307ca24fa.jpg" alt="The Delights Logo" class="logo"> <!-- Add your logo image here -->
+    <div class="header-text">
+    <h1>THE DELIGHTS</h1>
+    <p>India's most loved sweets!</p>
+    
+    <div class="header-text">
+    </div>
+  </header>
+
+  <div class="cart" onclick="toggleCart()">🛒 Cart: <span id="cartCount">0</span></div>
+
+  <nav>
+    <a href="#shop">Shop</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container" id="shop">
+    <!-- Repeatable sweet item -->
+  </div>
+
+  <!-- Cart Modal -->
+  <div id="cartModal">
+    <h3 style="text-align:center; color:#ff6f61;">Your Cart</h3>
+    <div id="cartContainer"></div>
+    <div class="total-price" id="totalPrice">Total: Rs.0</div>
+    <button id="closeBtn" onclick="toggleCart()">Close</button>
+  </div>
+   <!-- About Us Section -->
+   <div id="about" style="padding: 20px; background-color: #ffb3b3;">
+    <h2 style="text-align: center; color: #ff6f61;">About Us</h2>
+    <p style="text-align: center; font-size: 22px; color: #ffffff;">
+      Welcome to **The Delights**, where we bring you the finest traditional sweets from across India.
+      Our sweets are made with the highest quality ingredients and are prepared with love and care.
+      Whether you're celebrating a festival or simply craving something sweet, we have a variety of treats for every occasion.
+      Experience the authentic taste of India with every bite!
+    </p>
+    <img src="https://i.pinimg.com/474x/77/74/0f/77740fb2b0475ec32651b11f95a588b9.jpg" class="about img">
+    <img src="https://i.pinimg.com/474x/01/63/26/01632619d308b5710bc43ffa3ddfc317.jpg" class="about img">
+    <img src="https://i.pinimg.com/736x/44/c2/c0/44c2c0b9a21bf043125d6596aa8679eb.jpg" class="about img">
+    <img src="https://i.pinimg.com/736x/2c/41/67/2c4167d4e8b6418330e4dbd3a2690c9a.jpg" class="about img">
+  </div>
+
+  <!-- Contact Us Section -->
+  <div id="contact" style="padding: 20px; background-color: #f7f7f7;">
+    <h2 style="text-align: center; color: #ff6f61;">Contact Us</h2>
+    <div style="text-align: center; font-size: 18px; color: #555;">
+      <p>If you have any questions or would like to place a special order, feel free to reach out to us!</p>
+      <p><strong>Email:</strong> support@thedelights.com</p>
+      <p><strong>Phone:</strong> +91 6778656545</p>
+      <p><strong>Address:</strong> fairy street ,Greater Noida, India</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 The Delights | All Rights Reserved</p>
+  </footer>
+
+  <script>
+   
+    const sweets = [
+      { name: "Gulab jamun", price: 700, imageUrl: "https://i.pinimg.com/736x/c7/9e/21/c79e21df19117171b0bddc968b820853.jpg" },
+      { name: "Rasmalai", price: 800, imageUrl: "https://i.pinimg.com/736x/dc/e5/52/dce552af6cf31851ac8f487ee8400197.jpg" },
+      { name: "Gajar Halwa", price: 600, imageUrl: "https://i.pinimg.com/736x/7b/5c/a1/7b5ca102f12233f8459e4d1490837b19.jpg" },
+      { name: "kaju Katli", price: 800, imageUrl: "https://i.pinimg.com/736x/00/6e/aa/006eaa47e3c75bd7d39fa995e0ecc3cb.jpg" },
+      { name: "Rasgulla", price: 700, imageUrl: "https://i.pinimg.com/736x/03/55/5a/03555afe31b7ca2b9db1dbf0f45a02e6.jpg" },
+      { name: "mishti doi", price: 800, imageUrl: "https://i.pinimg.com/474x/3e/d1/a5/3ed1a5e62f9c045eabcc8bb988020e69.jpg" },
+      { name: "Motichoor Laddu", price: 600, imageUrl: "https://i.pinimg.com/474x/0d/8b/94/0d8b94bb056028ff011846732397e674.jpg" },
+      { name: "Balushashi", price: 700, imageUrl: "https://i.pinimg.com/474x/b3/94/08/b39408a20a8e9f5d4e286ed5b269ed0f.jpg" },
+      { name: "Sonpapdi", price: 600, imageUrl: "https://i.pinimg.com/736x/0d/2d/3e/0d2d3e3550e41607ed1bf01e7a2c6346.jpg" },
+      { name: "Milkcake", price: 500, imageUrl: "https://i.pinimg.com/736x/24/3e/c1/243ec1886505e47dae0d4b283d0aaef0.jpg" }
+    ];
+
+    const shopContainer = document.getElementById("shop");
+    const cartContainer = document.getElementById("cartContainer");
+
+    sweets.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'sweets-item';
+      div.innerHTML = `
+        <img src="${item.imageUrl}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <p>Rs.${item.price}/kg</p>
+        <button onclick="addToCart('${item.name}')">Add to Cart</button>
+      `;
+      shopContainer.appendChild(div);
+    });
+
+    function addToCart(itemName) {
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      const sweet = sweets.find(s => s.name === itemName);
+      const existingItem = cartItems.find(item => item.name === itemName);
+
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cartItems.push({ ...sweet, quantity: 1 });
+      }
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      updateCartCount();
+      alert(`${itemName} added to cart!`);
+    }
+
+    function updateCartCount() {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cartCount').textContent = totalCount;
+    }
+
+    function toggleCart() {
+      const modal = document.getElementById('cartModal');
+      modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+      loadCart();
+    }
+
+    function loadCart() {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      cartContainer.innerHTML = '';
+      let total = 0;
+
+      cartItems.forEach((item, index) => {
+        const itemTotal = item.quantity * item.price;
+        total += itemTotal;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.imageUrl}" alt="${item.name}">
+          <div>
+            <h4>${item.name}</h4>
+            <p>${item.quantity} x Rs.${item.price} = Rs.${itemTotal}</p>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        `;
+        cartContainer.appendChild(div);
+      });
+
+      document.getElementById('totalPrice').textContent = `Total: Rs.${total}`;
+    }
+
+    function removeItem(index) {
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+      } else {
+        cartItems.splice(index, 1);
+      }
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      loadCart();
+      updateCartCount();
+    }
+
+    window.onload = updateCartCount;
+  </script>
+</body>
+</html>
